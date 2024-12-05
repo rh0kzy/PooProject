@@ -1,0 +1,43 @@
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        PatientDAO patientDAO = new PatientDAO();
+
+        System.out.println("=== Gestion du Cabinet Médical ===");
+        System.out.println("1. Sing in"); 
+        System.out.println("2. Ajouter un Patient");
+        System.out.println("3. Afficher les Rendez-vous");
+        System.out.println("Entrez votre choix : ");
+        
+        int choix = scanner.nextInt();
+        scanner.nextLine(); 
+
+        switch (choix) {
+            case 1:
+                System.out.println("Nom du Patient : ");
+                String nom = scanner.nextLine();
+                System.out.println("Prénom du Patient : ");
+                String prenom = scanner.nextLine();
+                System.out.println("Téléphone : ");
+                String telephone = scanner.nextLine();
+
+                Patient patient = new Patient(0, nom, prenom, telephone);
+               
+                break;
+
+            case 2:
+                // Affichage des rendez-vous
+                System.out.println("Cette fonctionnalité sera implémentée !");
+                break;
+
+            default:
+                System.out.println("Choix invalide.");
+                break;
+        }
+
+        scanner.close();
+    }
+}
