@@ -1,0 +1,11 @@
+import java.util.Random;
+package k;
+
+public class random {
+
+    public static void main(String[] args) {
+        Random random = new Random();
+        int randomNumber = 10000 + random.nextInt(90000);
+        System.out.println("Numéro aléatoire: " + randomNumber);
+    }
+}
