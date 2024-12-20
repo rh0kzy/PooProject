@@ -1,0 +1,60 @@
+package projet;
+
+public class Resumerendezvous {
+	private String date;
+    private String diagnostic;
+    private String prescription;
+    private String observationMedicale; // New field
+
+// Constructor
+      public ResumeRendezVous(String date, String diagnostic, String prescription, String observationMedicale) {
+    this.date = date;
+    this.diagnostic = diagnostic;
+    this.prescription = prescription;
+    this.observationMedicale = observationMedicale; // Initialize the observation
+    }
+
+// Getters and Setters
+    public String getDate() {
+    return date;
+     }
+
+     public void setDate(String date) {
+    this.date = date;
+     }
+
+     public String getDiagnostic() {
+    return diagnostic;
+}
+
+     public void setDiagnostic(String diagnostic) {
+    this.diagnostic = diagnostic;
+}
+
+     public String getPrescription() {
+    return prescription;
+}
+
+     public void setPrescription(String prescription) {
+    this.prescription = prescription;
+}
+
+       public String getObservationMedicale() {
+    return observationMedicale;
+}
+
+     public void setObservationMedicale(String observationMedicale) {
+    this.observationMedicale = observationMedicale;
+}
+
+@Override
+          public String toString() {
+           return "Résumé Rendez-vous {" +
+            "Date='" + date + '\'' +
+            ", Diagnostic='" + diagnostic + '\'' +
+            ", Prescription='" + prescription + '\'' +
+            ", Observation Médicale='" + observationMedicale + '\'' +
+            '}';
+}
+
+}
