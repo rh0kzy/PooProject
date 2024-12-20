@@ -1,0 +1,63 @@
+package projet;
+
+import java.util.ArrayList;
+import ResumeRendezVous; 
+
+public class DossierMedical {
+	private ArrayList<String> allergies;
+    private ArrayList<String> conditions;
+    private ArrayList<ResumeRendezVous> ResumeRendezVous;
+
+    public DossierMedical() {
+        this.allergies = new ArrayList<>();
+        this.conditions = new ArrayList<>();
+        this.ResumeRendezVous = new ArrayList<>();
+    }
+
+    // Methods to manage allergies
+    public void addAllergy(String allergy) {
+        allergies.add(allergy);
+    }
+
+    public void removeAllergy(String allergy) {
+        allergies.remove(allergy);
+    }
+
+    public ArrayList<String> getAllergies() {
+        return allergies;
+    }
+
+    // Methods to manage conditions
+    public void addCondition(String condition) {
+        conditions.add(condition);
+    }
+
+    public void removeCondition(String condition) {
+        conditions.remove(condition);
+    }
+
+    public ArrayList<String> getConditions() {
+        return conditions;
+    }
+
+    // Methods to manage résumés
+    public void addResume(ResumeRendezVous resume) {
+        resumeRendezVousList.add(resume);
+    }
+
+    public ArrayList<ResumeRendezVous> getResumeRendezVousList() {
+        return ResumeRendezVous ;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("Dossier Médical : \n");
+        sb.append("Allergies : ").append(allergies).append("\n");
+        sb.append("Conditions : ").append(conditions).append("\n");
+        sb.append("Résumé des Rendez-vous : \n");
+        for (ResumeRendezVous resume : resumeRendezVousList) {
+            sb.append(resume).append("\n");
+        }
+        return sb.toString();
+    }
+}
