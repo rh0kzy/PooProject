@@ -1,0 +1,24 @@
+package projet;
+
+public class doctor extends personne  {
+	public String specialite  ;
+	public Doctor(String nom, String prenom, String telephone, String specialite) {
+        super(nom, prenom, telephone);
+        this.specialite = specialite;
+    }
+
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", Spécialité: " + specialite;
+    }
+	
+
+}
