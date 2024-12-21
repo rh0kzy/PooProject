@@ -1,18 +1,18 @@
 package projet;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import ResumeRendezVous;
 import java.util.List;
 import java.util.Scanner;
-import patient.java
-import patient.java ;
+
 public class main {
-	private static final ArrayList<Patient> patients = new ArrayList<>();
+	private static final ArrayList<patient> patients = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         int choix;
-
+while (true) {
         do {
             System.out.println("\n--- Gestion du Cabinet Médical ---");
             System.out.println("1. Ajouter un patient");
@@ -38,6 +38,7 @@ public class main {
             }
         } while (choix != 7);
     }
+    }
 
     private static void ajouterPatient() {
         System.out.print("Nom : ");
@@ -47,7 +48,7 @@ public class main {
         System.out.print("Téléphone : ");
         String telephone = scanner.nextLine();
 
-        Patient patient = new Patient(nom, prenom, telephone);
+        patient patient = new patient(nom, prenom, telephone);
         patients.add(patient);
         System.out.println("Patient ajouté avec succès !");
     }
@@ -59,7 +60,7 @@ public class main {
         }
 
         System.out.println("\nListe des patients :");
-        for (Patient patient : patients) {
+        for (patient patient : patients) {
             System.out.println(patient);
         }
     }
@@ -69,7 +70,7 @@ public class main {
         String nom = scanner.nextLine();
         boolean found = false;
 
-        for (Patient patient : patients) {
+        for (patient patient : patients) {
             if (patient.getNom().equalsIgnoreCase(nom)) {
                 System.out.println("Patient trouvé :");
                 System.out.println(patient);
@@ -105,9 +106,9 @@ public class main {
     private static void ajouterRendezVous() {
         System.out.print("Nom du patient : ");
         String nom = scanner.nextLine();
-        Patient patient = null;
+        patient patient = null;
 
-        for (Patient p : patients) {
+        for (patient p : patients) {
             if (p.getNom().equalsIgnoreCase(nom)) {
                 patient = p;
                 break;
@@ -129,16 +130,16 @@ public class main {
         LocalTime heure = LocalTime.parse(heureStr);
 
         RendezVous rendezVous = new RendezVous(date, heure);
-        patient.getDossierMedical().addRendezVous(rendezVous);
+        patient.dossierMedical.addRendezVous(rendezVous);
         System.out.println("Rendez-vous ajouté avec succès.");
     }
 
     private static void ajouterResumeRendezVous() {
         System.out.print("Nom du patient : ");
         String nom = scanner.nextLine();
-        Patient patient = null;
+        patient patient = null;
 
-        for (Patient p : patients) {
+        for (patient p : patients) {
             if (p.getNom().equalsIgnoreCase(nom)) {
                 patient = p;
                 break;
@@ -161,9 +162,11 @@ public class main {
             return;
         }
 
-        ResumeRendezVous resume = new ResumeRendezVous(dateStr, "Diagnostic", "Prescription", observation);
+        Resumerendezvous resume = new Resumerendezvous(dateStr, "Diagnostic", "Prescription", observation);
         patient.getDossierMedical().addResumeRendezVous(resume);
         System.out.println("Résumé de rendez-vous ajouté avec succès.");
     }
 }
+
+    
 
