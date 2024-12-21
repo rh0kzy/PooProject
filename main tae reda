@@ -166,7 +166,3 @@ while (true) {
         patient.getDossierMedical().addResumeRendezVous(resume);
         System.out.println("Résumé de rendez-vous ajouté avec succès.");
     }
-}
-
-    
-
