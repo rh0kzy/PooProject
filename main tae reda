@@ -33,7 +33,9 @@ while (true) {
                 case 4 -> supprimerPatient();
                 case 5 -> ajouterRendezVous();
                 case 6 -> ajouterResumeRendezVous();
-                case 7 -> System.out.println("Au revoir !");
+                case 7 ->{ System.out.println("Au revoir !");
+                System.exit(0);
+                }
                 default -> System.out.println("Choix invalide. Veuillez réessayer.");
             }
         } while (choix != 7);
