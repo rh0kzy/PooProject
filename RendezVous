@@ -1,28 +1,33 @@
+package projet;
+
 import java.time.LocalDateTime;
 
 public class RendezVous {
+    private static int counter = 1;
     private int id;
     private Patient patient;
     private LocalDateTime dateHeure;
 
-    public RendezVous(int id, Patient patient, LocalDateTime dateHeure) {
-        this.id = id;
+    public RendezVous(Patient patient, LocalDateTime dateHeure) {
+        this.id = counter++;
         this.patient = patient;
         this.dateHeure = dateHeure;
     }
 
-    // Getters et Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public Patient getPatient() { return patient; }
-    public void setPatient(Patient patient) { this.patient = patient; }
+    public Patient getPatient() {
+        return patient;
+    }
 
-    public LocalDateTime getDateHeure() { return dateHeure; }
-    public void setDateHeure(LocalDateTime dateHeure) { this.dateHeure = dateHeure; }
+    public LocalDateTime getDateHeure() {
+        return dateHeure;
+    }
 
     @Override
     public String toString() {
-        return "RendezVous [ID=" + id + ", Patient=" + patient + ", Date et Heure=" + dateHeure + "]";
+        return "Rendez-vous ID: " + id + ", Patient: " + patient.getNom() + ", Date et Heure: " + dateHeure;
     }
 }
