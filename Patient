@@ -1,12 +1,22 @@
 package projet;
 
-public class Patient extends Personne {
-    public Patient(String nom, String prenom, String telephone) {
-        super(nom, prenom, telephone);
+public class patient extends personne  {
+	DossierMedical dossierMedical;
+
+    public patient(String nom, String prenom, String telephone) {
+        super (nom, prenom, telephone);
+        this.dossierMedical = new DossierMedical();
+    }
+
+    public DossierMedical getDossierMedical() {
+        return dossierMedical;
     }
 
     @Override
     public String toString() {
-        return "Patient [" + super.toString() + "]";
-    }
+        return super.toString() + "\n" + dossierMedical.toString() ;
+        }
+    
 }
+    
+
