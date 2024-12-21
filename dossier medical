@@ -59,4 +59,19 @@ public class DossierMedical {
         }
         return sb.toString();
     }
+
+	public void addRendezVous(RendezVous rendezVous) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public RendezVous getRendezVousByDate(String dateStr) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addResumeRendezVous(projet.Resumerendezvous resume) {
+		// TODO Auto-generated method stub
+		
+	}
 }
