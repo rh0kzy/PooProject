@@ -1,8 +1,9 @@
 package projet;
 
-public class doctor extends personne  {
-	public String specialite  ;
-	public Doctor(String nom, String prenom, String telephone, String specialite) {
+public class Doctor extends Personne {
+    private String specialite;
+
+    public Doctor(String nom, String prenom, String telephone, String specialite) {
         super(nom, prenom, telephone);
         this.specialite = specialite;
     }
@@ -17,8 +18,6 @@ public class doctor extends personne  {
 
     @Override
     public String toString() {
-        return super.toString() + ", Spécialité: " + specialite;
+        return "Docteur [" + super.toString() + ", Spécialité: " + specialite + "]";
     }
-	
-
 }
