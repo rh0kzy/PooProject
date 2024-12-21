@@ -1,9 +1,9 @@
 package projet;
 
-public class Doctor extends Personne {
+public class Specialities extends Personne {
     private String specialite;
 
-    public Doctor(String nom, String prenom, String telephone, String specialite) {
+    public Specialities(String nom, String prenom, String telephone, String specialite) {
         super(nom, prenom, telephone);
         this.specialite = specialite;
     }
