@@ -1,13 +1,13 @@
 package projet;
 
-public class Resumerendezvous {
+public abstract class Resumerendezvous {
 	private String date;
     private String diagnostic;
     private String prescription;
     private String observationMedicale; // New field
 
 // Constructor
-      public ResumeRendezVous(String date, String diagnostic, String prescription, String observationMedicale) {
+      public Resumerendezvous(String date, String diagnostic, String prescription, String observationMedicale) {
     this.date = date;
     this.diagnostic = diagnostic;
     this.prescription = prescription;
