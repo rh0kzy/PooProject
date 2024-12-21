@@ -1,17 +1,16 @@
 package projet;
 
 import java.util.ArrayList;
-import ResumeRendezVous; 
 
 public class DossierMedical {
 	private ArrayList<String> allergies;
     private ArrayList<String> conditions;
-    private ArrayList<ResumeRendezVous> ResumeRendezVous;
+    private ArrayList<Resumerendezvous> Resumerendezvous;
 
     public DossierMedical() {
         this.allergies = new ArrayList<>();
         this.conditions = new ArrayList<>();
-        this.ResumeRendezVous = new ArrayList<>();
+        this.Resumerendezvous = new ArrayList<>();
     }
 
     // Methods to manage allergies
@@ -41,12 +40,12 @@ public class DossierMedical {
     }
 
     // Methods to manage résumés
-    public void addResume(ResumeRendezVous resume) {
-        resumeRendezVousList.add(resume);
+    public void addResume(Resumerendezvous resume) {
+    	Resumerendezvous.add(resume);
     }
 
-    public ArrayList<ResumeRendezVous> getResumeRendezVousList() {
-        return ResumeRendezVous ;
+    public ArrayList<Resumerendezvous> getResumerendezvous() {
+        return Resumerendezvous ;
     }
 
     @Override
@@ -55,7 +54,7 @@ public class DossierMedical {
         sb.append("Allergies : ").append(allergies).append("\n");
         sb.append("Conditions : ").append(conditions).append("\n");
         sb.append("Résumé des Rendez-vous : \n");
-        for (ResumeRendezVous resume : resumeRendezVousList) {
+        for (Resumerendezvous resume : Resumerendezvous) {
             sb.append(resume).append("\n");
         }
         return sb.toString();
