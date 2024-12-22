@@ -44,7 +44,7 @@ public void rechercherPatient(ArrayList<patient> patients)  {
 }
 public void ajouterRendezVous (ArrayList<patient> patients) {
     System.out.print("Nom du patient : ");
-    Scanner scanner = null;
+    Scanner scanner = new Scanner(System.in);
 	String nom = scanner.nextLine();
     patient patient = null;
 
@@ -68,7 +68,7 @@ public void ajouterRendezVous (ArrayList<patient> patients) {
     LocalDate date = LocalDate.parse(dateStr);
     LocalTime heure = LocalTime.parse(heureStr);
 
-    RendezVous rendezVous = new RendezVous(patient, null, date, heure);
+    RendezVous rendezVous = new RendezVous(null, heure);
     patient.dossierMedical.addRendezVous(rendezVous);
     System.out.println("Rendez-vous ajouté avec succès.");
 }}
