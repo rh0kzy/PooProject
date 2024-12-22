@@ -14,30 +14,32 @@ public class main {
         int choix;
 while (true) {
         do {
-            System.out.println("\n--- Gestion du Cabinet Médical ---");
-            System.out.println("1. Ajouter un patient");
-            System.out.println("2. Afficher tous les patients");
-            System.out.println("3. Rechercher un patient");
-            System.out.println("4. Supprimer un patient");
-            System.out.println("5. Ajouter un rendez-vous");
-            System.out.println("6. Ajouter un résumé de rendez-vous");
-            System.out.println("7. Ajouter une allergie");
-            System.out.println("8. Ajouter une condition médicale");
-            System.out.println("9. Quitter");
-            System.out.print("Votre choix : ");
+            	System.out.println("\n--- Gestion du Cabinet Médical ---");
+            	System.out.println("1. Ajouter un patient");
+            	System.out.println("2. Afficher tous les patients");
+            	System.out.println("3. Rechercher un patient");
+            	System.out.println("4. Supprimer un patient");
+            	System.out.println("5. Ajouter un rendez-vous");
+            	System.out.println("6. Ajouter un résumé de rendez-vous");
+            	System.out.println("7. Ajouter une allergie");
+            	System.out.println("8. Ajouter une condition médicale");
+            	System.out.println("9. Quitter");
+            	System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine(); // Consume newline
-
+PatientsManager p= new PatientsManager();
+DossierMedical d= new DossierMedical();
+patient j= new patient();
             switch (choix) {
-                case 1 -> ajouterPatient();
-                case 2 -> afficherPatients();
-                case 3 -> rechercherPatient();
-                case 4 -> supprimerPatient();
-                case 5 -> ajouterRendezVous();
-                case 6 -> ajouterResumeRendezVous();
-		case 7 -> ajouterAllergie();
-		case 8 -> ajouterCondition();
-		case 9 ->{ System.out.println("Au revoir !");
+                case 1 -> p.ajouterPatient();
+                case 2 -> p.afficherPatients();
+                case 3 -> p.rechercherPatient();
+                case 4 -> p.supprimerPatient();
+                case 5 -> j.ajouterRendezVous();
+                case 6 -> d.ajouterResumeRendezVous();
+                case 7 -> d.ajouterAllergie();
+                case 8 -> d.ajouterCondition();
+                case 9 ->{ System.out.println("Au revoir !");
 
                 System.exit(0);
                 }
@@ -47,175 +49,5 @@ while (true) {
     }
     }
 
-    private static void ajouterPatient() {
-        System.out.print("Nom : ");
-        String nom = scanner.nextLine();
-        System.out.print("Prénom : ");
-        String prenom = scanner.nextLine();
-        System.out.print("Téléphone : ");
-        String telephone = scanner.nextLine();
-
-        patient patient = new patient(nom, prenom, telephone);
-        patients.add(patient);
-        System.out.println("Patient ajouté avec succès !");
-    }
-
-    private static void afficherPatients() {
-        if (patients.isEmpty()) {
-            System.out.println("Aucun patient enregistré.");
-            return;
-        }
-
-        System.out.println("\nListe des patients :");
-        for (patient patient : patients) {
-            System.out.println(patient);
-        }
-    }
-
-    private static void rechercherPatient() {
-        System.out.print("Nom du patient à rechercher : ");
-        String nom = scanner.nextLine();
-        boolean found = false;
-
-        for (patient patient : patients) {
-            if (patient.getNom().equalsIgnoreCase(nom)) {
-                System.out.println("Patient trouvé :");
-                System.out.println(patient);
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Patient introuvable.");
-        }
-    }
-
-    private static void supprimerPatient() {
-        System.out.print("Nom du patient à supprimer : ");
-        String nom = scanner.nextLine();
-        boolean found = false;
-
-        for (int i = 0; i < patients.size(); i++) {
-            if (patients.get(i).getNom().equalsIgnoreCase(nom)) {
-                patients.remove(i);
-                System.out.println("Patient supprimé avec succès.");
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            System.out.println("Patient introuvable.");
-        }
-    }
-
-    private static void ajouterRendezVous() {
-        System.out.print("Nom du patient : ");
-        String nom = scanner.nextLine();
-        patient patient = null;
-
-        for (patient p : patients) {
-            if (p.getNom().equalsIgnoreCase(nom)) {
-                patient = p;
-                break;
-            }
-        }
-
-        if (patient == null) {
-            System.out.println("Patient introuvable.");
-            return;
-        }
-
-        System.out.print("Date du rendez-vous (yyyy-MM-dd) : ");
-        String dateStr = scanner.nextLine();
-        System.out.print("Heure du rendez-vous (HH:mm) : ");
-        String heureStr = scanner.nextLine();
-
-        // Convert date and time from string
-        LocalDate date = LocalDate.parse(dateStr);
-        LocalTime heure = LocalTime.parse(heureStr);
-
-        RendezVous rendezVous = new RendezVous(date, heure);
-        patient.dossierMedical.addRendezVous(rendezVous);
-        System.out.println("Rendez-vous ajouté avec succès.");
-    }
-
-    private static void ajouterResumeRendezVous() {
-        System.out.print("Nom du patient : ");
-        String nom = scanner.nextLine();
-        patient patient = null;
-
-        for (patient p : patients) {
-            if (p.getNom().equalsIgnoreCase(nom)) {
-                patient = p;
-                break;
-            }
-        }
-
-        if (patient == null) {
-            System.out.println("Patient introuvable.");
-            return;
-        }
-
-        System.out.print("Date du rendez-vous (yyyy-MM-dd) : ");
-        String dateStr = scanner.nextLine();
-        System.out.print("Observation médicale : ");
-        String observation = scanner.nextLine();
-
-        RendezVous rendezVous = patient.getDossierMedical().getRendezVousByDate(dateStr);
-        if (rendezVous == null) {
-            System.out.println("Aucun rendez-vous trouvé à cette date.");
-            return;
-        }
-
-        Resumerendezvous resume = new Resumerendezvous(dateStr, "Diagnostic", "Prescription", observation);
-        patient.getDossierMedical().addResumeRendezVous(resume);
-        System.out.println("Résumé de rendez-vous ajouté avec succès.");
-    }
-private static void ajouterAllergie() {
-    System.out.print("Nom du patient : ");
-    String nom = scanner.nextLine();
-    patient patient = null;
-
-    for (patient p : patients) {
-        if (p.getNom().equalsIgnoreCase(nom)) {
-            patient = p;
-            break;
-        }
-    }
-
-    if (patient == null) {
-        System.out.println("Patient introuvable.");
-        return;
-    }
-
-    System.out.print("Allergie à ajouter : ");
-    String allergie = scanner.nextLine();
-
-    patient.getDossierMedical().addAllergy(allergie);
-    System.out.println("Allergie ajoutée avec succès !");
-}
-private static void ajouterCondition() {
-    System.out.print("Nom du patient : ");
-    String nom = scanner.nextLine();
-    patient patient = null;
-
-    for (patient p : patients) {
-        if (p.getNom().equalsIgnoreCase(nom)) {
-            patient = p;
-            break;
-        }
-    }
-
-    if (patient == null) {
-        System.out.println("Patient introuvable.");
-        return;
-    }
-
-    System.out.print("Condition à ajouter : ");
-    String condition = scanner.nextLine();
-
-    patient.getDossierMedical().addCondition(condition);
-    System.out.println("Condition ajoutée avec succès !");
-}
+  
+ }
