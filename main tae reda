@@ -21,7 +21,9 @@ while (true) {
             System.out.println("4. Supprimer un patient");
             System.out.println("5. Ajouter un rendez-vous");
             System.out.println("6. Ajouter un résumé de rendez-vous");
-            System.out.println("7. Quitter");
+            System.out.println("7. Ajouter une allergie");
+            System.out.println("8. Ajouter une condition médicale");
+            System.out.println("9. Quitter");
             System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -33,7 +35,10 @@ while (true) {
                 case 4 -> supprimerPatient();
                 case 5 -> ajouterRendezVous();
                 case 6 -> ajouterResumeRendezVous();
-                case 7 ->{ System.out.println("Au revoir !");
+		case 7 -> ajouterAllergie();
+		case 8 -> ajouterCondition();
+		case 9 ->{ System.out.println("Au revoir !");
+
                 System.exit(0);
                 }
                 default -> System.out.println("Choix invalide. Veuillez réessayer.");
@@ -168,3 +173,49 @@ while (true) {
         patient.getDossierMedical().addResumeRendezVous(resume);
         System.out.println("Résumé de rendez-vous ajouté avec succès.");
     }
+private static void ajouterAllergie() {
+    System.out.print("Nom du patient : ");
+    String nom = scanner.nextLine();
+    patient patient = null;
+
+    for (patient p : patients) {
+        if (p.getNom().equalsIgnoreCase(nom)) {
+            patient = p;
+            break;
+        }
+    }
+
+    if (patient == null) {
+        System.out.println("Patient introuvable.");
+        return;
+    }
+
+    System.out.print("Allergie à ajouter : ");
+    String allergie = scanner.nextLine();
+
+    patient.getDossierMedical().addAllergy(allergie);
+    System.out.println("Allergie ajoutée avec succès !");
+}
+private static void ajouterCondition() {
+    System.out.print("Nom du patient : ");
+    String nom = scanner.nextLine();
+    patient patient = null;
+
+    for (patient p : patients) {
+        if (p.getNom().equalsIgnoreCase(nom)) {
+            patient = p;
+            break;
+        }
+    }
+
+    if (patient == null) {
+        System.out.println("Patient introuvable.");
+        return;
+    }
+
+    System.out.print("Condition à ajouter : ");
+    String condition = scanner.nextLine();
+
+    patient.getDossierMedical().addCondition(condition);
+    System.out.println("Condition ajoutée avec succès !");
+}
