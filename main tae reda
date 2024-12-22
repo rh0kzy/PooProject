@@ -12,7 +12,10 @@ public class main {
 
     public static void main(String[] args) {
         int choix;
-while (true) {
+        PatientsManager p= new PatientsManager();
+        DossierMedical d= new DossierMedical();
+        patient j= new patient(null, null, null);
+        while (true) {
         do {
             	System.out.println("\n--- Gestion du Cabinet Médical ---");
             	System.out.println("1. Ajouter un patient");
@@ -27,18 +30,16 @@ while (true) {
             	System.out.print("Votre choix : ");
             choix = scanner.nextInt();
             scanner.nextLine(); // Consume newline
-PatientsManager p= new PatientsManager();
-DossierMedical d= new DossierMedical();
-patient j= new patient();
+
             switch (choix) {
                 case 1 -> p.ajouterPatient();
                 case 2 -> p.afficherPatients();
                 case 3 -> p.rechercherPatient();
                 case 4 -> p.supprimerPatient();
-                case 5 -> j.ajouterRendezVous();
-                case 6 -> d.ajouterResumeRendezVous();
-                case 7 -> d.ajouterAllergie();
-                case 8 -> d.ajouterCondition();
+                case 5 -> j.ajouterRendezVous(p.getp());
+                case 6 -> d.ajouterResumeRendezVous(p.getp());
+                case 7 -> d.ajouterAllergie(p.getp());
+                case 8 -> d.ajouterCondition(p.getp());
                 case 9 ->{ System.out.println("Au revoir !");
 
                 System.exit(0);
