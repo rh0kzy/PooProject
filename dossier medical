@@ -1,5 +1,5 @@
 package projet;
-
+import java.util.Scanner;
 import java.util.ArrayList;
 
 public class DossierMedical {
@@ -7,6 +7,7 @@ public class DossierMedical {
     private ArrayList<String> conditions;
     private ArrayList<Resumerendezvous> resumesRendezvous;
     private ArrayList<RendezVous> rendezVousList;
+	private Object scanner;
 
     // Constructeur
     public DossierMedical() {
@@ -114,4 +115,95 @@ public class DossierMedical {
         }
         return sb.toString();
     }
+
+	public void addResumeRendezVous(Resumerendezvous resume) {
+		// TODO Auto-generated method stub
+		
+	}
+	  public void ajouterAllergie(ArrayList <patient> patients )  {
+		    System.out.print("Nom du patient : ");
+		    Object scanner = null;
+			String nom = ((Scanner) scanner).nextLine();
+		    patient patient = null;
+
+		    
+			for (patient p : patients) {
+		        if (p.getNom().equalsIgnoreCase(nom)) {
+		            patient = p;
+		            break;
+		        }
+		    }
+
+		    if (patient == null) {
+		        System.out.println("Patient introuvable.");
+		        return;
+		    }
+
+		    System.out.print("Allergie à ajouter : ");
+		    String allergie = ((Scanner) scanner).nextLine();
+
+		    patient.getDossierMedical().addAllergy(allergie);
+		    System.out.println("Allergie ajoutée avec succès !");
+		}
+		   public void ajouterCondition() {
+		    System.out.print("Nom du patient : ");
+		    scanner = null;
+			String nom = ((Scanner) scanner).hasNext();
+		    patient patient = null;
+
+		    projet.patient[] patients;
+			for (patient p : patients) {
+		        if (p.getNom().equalsIgnoreCase(nom)) {
+		            patient = p;
+		            break;
+		        }
+		    }
+
+		    if (patient == null) {
+		        System.out.println("Patient introuvable.");
+		        return;
+		    }
+
+		    System.out.print("Condition à ajouter : ");
+		    String condition = ((Scanner) scanner).nextLine();
+
+		    patient.getDossierMedical().addCondition(condition);
+		    System.out.println("Condition ajoutée avec succès !");
+		}
+		   public void ajouterResumeRendezVous(ArrayList <patient> patients ) {
+		        System.out.print("Nom du patient : ");
+		        String nom = ((Scanner) scanner).nextLine();
+		        patient patient = null;
+
+		        
+				for (patient p : patients) {
+		            if (p.getNom().equalsIgnoreCase(nom)) {
+		                patient = p;
+		                break;
+		            }
+		        }
+
+		        if (patient == null) {
+		            System.out.println("Patient introuvable.");
+		            return;
+		        }
+
+		        System.out.print("Date du rendez-vous (yyyy-MM-dd) : ");
+		        String dateStr = ((Scanner) scanner).nextLine();
+		        System.out.print("Observation médicale : ");
+		        String observation = ((Scanner) scanner).nextLine();
+
+		        RendezVous rendezVous = patient.getDossierMedical().getRendezVousByDate(dateStr);
+		        if (rendezVous == null) {
+		            System.out.println("Aucun rendez-vous trouvé à cette date.");
+		            return;
+		        }
+
+		        Resumerendezvous resume = new Resumerendezvous(dateStr, "Diagnostic", "Prescription", observation);
+		        patient.getDossierMedical().addResumeRendezVous(resume);
+		        System.out.println("Résumé de rendez-vous ajouté avec succès.");
+		    }
+		   
+		   
+		   
 }
