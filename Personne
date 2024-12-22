@@ -1,16 +1,17 @@
 package projet;
 
-public class Personne {
+public class personne {
     private String nom;
     private String prenom;
     private String telephone;
 
-    public Personne(String nom, String prenom, String telephone) {
+    public personne(String nom, String prenom, String telephone) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
     }
 
+    // Getters and Setters
     public String getNom() {
         return nom;
     }
@@ -39,4 +40,4 @@ public class Personne {
     public String toString() {
         return "Nom: " + nom + ", Prénom: " + prenom + ", Téléphone: " + telephone;
     }
-}
+    }
