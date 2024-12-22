@@ -18,5 +18,8 @@ public class patient extends personne  {
         }
     
 }
-    
+    public dossierdedical getdossiermedical() {
+    return dossierMedical;
+}
+
 
