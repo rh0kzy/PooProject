@@ -122,8 +122,8 @@ public class DossierMedical {
 	}
 	  public void ajouterAllergie(ArrayList <patient> patients )  {
 		    System.out.print("Nom du patient : ");
-		    Object scanner = null;
-			String nom = ((Scanner) scanner).nextLine();
+		    Scanner scanner = new Scanner(System.in);
+			String nom =scanner.nextLine();
 		    patient patient = null;
 
 		    
@@ -140,18 +140,18 @@ public class DossierMedical {
 		    }
 
 		    System.out.print("Allergie à ajouter : ");
-		    String allergie = ((Scanner) scanner).nextLine();
+		    String allergie = scanner.nextLine();
 
 		    patient.getDossierMedical().addAllergy(allergie);
 		    System.out.println("Allergie ajoutée avec succès !");
 		}
-		   public void ajouterCondition() {
+		   public void ajouterCondition(ArrayList<patient> patients) {
 		    System.out.print("Nom du patient : ");
-		    scanner = null;
-			String nom = ((Scanner) scanner).hasNext();
+		    Scanner scanner = new Scanner(System.in);
+			String nom = scanner.nextLine();
 		    patient patient = null;
 
-		    projet.patient[] patients;
+		    
 			for (patient p : patients) {
 		        if (p.getNom().equalsIgnoreCase(nom)) {
 		            patient = p;
