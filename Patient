@@ -1,6 +1,11 @@
 package projet;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class patient extends personne  {
+	private ArrayList <RendezVous> RendezVous ;
 	DossierMedical dossierMedical;
 
     public patient(String nom, String prenom, String telephone) {
@@ -17,6 +22,53 @@ public class patient extends personne  {
         return super.toString() + "\n" + dossierMedical.toString() ;
         }
     
-}
- 
 
+public void rechercherPatient(ArrayList<patient> patients)  {
+    System.out.print("Nom du patient à rechercher : ");
+    Scanner scanner = new Scanner(System.in) ;
+	String nom = scanner.nextLine();
+    boolean found = false;
+
+	for (patient patient : patients) {
+        if (patient.getNom().equalsIgnoreCase(nom)) {
+            System.out.println("Patient trouvé :");
+            System.out.println(patient);
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        System.out.println("Patient introuvable.");
+    }
+}
+public void ajouterRendezVous (ArrayList<patient> patients) {
+    System.out.print("Nom du patient : ");
+    Scanner scanner = null;
+	String nom = scanner.nextLine();
+    patient patient = null;
+
+    
+	for (patient p : patients) {
+        if (p.getNom().equalsIgnoreCase(nom)) {
+            patient = p;
+            break;
+        }
+    }
+    if (patient == null) {
+        System.out.println("Patient introuvable.");
+        return;
+    }
+    System.out.print("Date du rendez-vous (yyyy-MM-dd) : ");
+    String dateStr = scanner.nextLine();
+    System.out.print("Heure du rendez-vous (HH:mm) : ");
+    String heureStr = scanner.nextLine();
+
+ 
+    LocalDate date = LocalDate.parse(dateStr);
+    LocalTime heure = LocalTime.parse(heureStr);
+
+    RendezVous rendezVous = new RendezVous(patient, null, date, heure);
+    patient.dossierMedical.addRendezVous(rendezVous);
+    System.out.println("Rendez-vous ajouté avec succès.");
+}}
