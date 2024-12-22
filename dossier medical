@@ -3,75 +3,115 @@ package projet;
 import java.util.ArrayList;
 
 public class DossierMedical {
-	private ArrayList<String> allergies;
+    private ArrayList<String> allergies;
     private ArrayList<String> conditions;
-    private ArrayList<Resumerendezvous> Resumerendezvous;
+    private ArrayList<Resumerendezvous> resumesRendezvous;
+    private ArrayList<RendezVous> rendezVousList;
 
+    // Constructeur
     public DossierMedical() {
         this.allergies = new ArrayList<>();
         this.conditions = new ArrayList<>();
-        this.Resumerendezvous = new ArrayList<>();
+        this.resumesRendezvous = new ArrayList<>();
+        this.rendezVousList = new ArrayList<>();
     }
 
-    // Methods to manage allergies
+    // Méthodes pour gérer les allergies
     public void addAllergy(String allergy) {
-        allergies.add(allergy);
+        if (!allergies.contains(allergy)) {
+            allergies.add(allergy);
+            System.out.println("Allergie ajoutée : " + allergy);
+        } else {
+            System.out.println("Cette allergie est déjà enregistrée.");
+        }
     }
 
     public void removeAllergy(String allergy) {
-        allergies.remove(allergy);
+        if (allergies.remove(allergy)) {
+            System.out.println("Allergie supprimée : " + allergy);
+        } else {
+            System.out.println("Allergie non trouvée.");
+        }
     }
 
     public ArrayList<String> getAllergies() {
-        return allergies;
+        return new ArrayList<>(allergies); // Retourne une copie pour éviter les modifications directes
     }
 
-    // Methods to manage conditions
+    // Méthodes pour gérer les conditions médicales
     public void addCondition(String condition) {
-        conditions.add(condition);
+        if (!conditions.contains(condition)) {
+            conditions.add(condition);
+            System.out.println("Condition ajoutée : " + condition);
+        } else {
+            System.out.println("Cette condition est déjà enregistrée.");
+        }
     }
 
     public void removeCondition(String condition) {
-        conditions.remove(condition);
+        if (conditions.remove(condition)) {
+            System.out.println("Condition supprimée : " + condition);
+        } else {
+            System.out.println("Condition non trouvée.");
+        }
     }
 
     public ArrayList<String> getConditions() {
-        return conditions;
+        return new ArrayList<>(conditions); // Retourne une copie pour éviter les modifications directes
     }
 
-    // Methods to manage résumés
+    // Méthodes pour gérer les résumés des rendez-vous
     public void addResume(Resumerendezvous resume) {
-    	Resumerendezvous.add(resume);
+        resumesRendezvous.add(resume);
+        System.out.println("Résumé de rendez-vous ajouté.");
     }
 
-    public ArrayList<Resumerendezvous> getResumerendezvous() {
-        return Resumerendezvous ;
+    public ArrayList<Resumerendezvous> getResumesRendezvous() {
+        return new ArrayList<>(resumesRendezvous); // Retourne une copie pour éviter les modifications directes
     }
 
+    // Méthodes pour gérer les rendez-vous
+    public void addRendezVous(RendezVous rendezVous) {
+        rendezVousList.add(rendezVous);
+        System.out.println("Rendez-vous ajouté : " + rendezVous);
+    }
+
+    public RendezVous getRendezVousByDate(String dateStr) {
+        for (RendezVous rv : rendezVousList) {
+            if (rv.getDate().toString().equals(dateStr)) {
+                return rv;
+            }
+        }
+        System.out.println("Aucun rendez-vous trouvé pour la date : " + dateStr);
+        return null;
+    }
+
+    public ArrayList<RendezVous> getRendezVousList() {
+        return new ArrayList<>(rendezVousList); // Retourne une copie pour éviter les modifications directes
+    }
+
+    // Méthode toString pour afficher les informations
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Dossier Médical : \n");
-        sb.append("Allergies : ").append(allergies).append("\n");
-        sb.append("Conditions : ").append(conditions).append("\n");
-        sb.append("Résumé des Rendez-vous : \n");
-        for (Resumerendezvous resume : Resumerendezvous) {
-            sb.append(resume).append("\n");
+        StringBuilder sb = new StringBuilder("Dossier Médical :\n");
+        sb.append("Allergies : ").append(allergies.isEmpty() ? "Aucune" : allergies).append("\n");
+        sb.append("Conditions : ").append(conditions.isEmpty() ? "Aucune" : conditions).append("\n");
+        sb.append("Résumé des Rendez-vous :\n");
+        if (resumesRendezvous.isEmpty()) {
+            sb.append("Aucun résumé disponible.\n");
+        } else {
+            for (Resumerendezvous resume : resumesRendezvous) {
+                sb.append(resume).append("\n");
+            }
+        }
+        sb.append("Liste des Rendez-vous :\n");
+        if (rendezVousList.isEmpty()) {
+            sb.append("Aucun rendez-vous enregistré.\n");
+        } else {
+            for (RendezVous rv : rendezVousList) {
+                sb.append(rv).append("\n");
+            }
         }
         return sb.toString();
     }
-
-	public void addRendezVous(RendezVous rendezVous) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public RendezVous getRendezVousByDate(String dateStr) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void addResumeRendezVous(projet.Resumerendezvous resume) {
-		// TODO Auto-generated method stub
-		
-	}
 }
