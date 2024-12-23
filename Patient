@@ -46,9 +46,10 @@ public void ajouterRendezVous (ArrayList<patient> patients) {
     System.out.print("Nom du patient : ");
     Scanner scanner = new Scanner(System.in);
 	String nom = scanner.nextLine();
-    patient patient = null;
+  
 
     
+	patient patient = null;
 	for (patient p : patients) {
         if (p.getNom().equalsIgnoreCase(nom)) {
             patient = p;
@@ -68,7 +69,7 @@ public void ajouterRendezVous (ArrayList<patient> patients) {
     LocalDate date = LocalDate.parse(dateStr);
     LocalTime heure = LocalTime.parse(heureStr);
 
-    RendezVous rendezVous = new RendezVous(null, heure);
+    RendezVous rendezVous = new RendezVous(date, heure);
     patient.dossierMedical.addRendezVous(rendezVous);
     System.out.println("Rendez-vous ajouté avec succès.");
 }}
