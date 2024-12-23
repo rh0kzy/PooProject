@@ -172,7 +172,8 @@ public class DossierMedical {
 		}
 		   public void ajouterResumeRendezVous(ArrayList <patient> patients ) {
 		        System.out.print("Nom du patient : ");
-		        String nom = ((Scanner) scanner).nextLine();
+		        Scanner scanner = new Scanner(System.in);
+		        String nom = scanner.nextLine();
 		        patient patient = null;
 
 		        
@@ -189,9 +190,13 @@ public class DossierMedical {
 		        }
 
 		        System.out.print("Date du rendez-vous (yyyy-MM-dd) : ");
-		        String dateStr = ((Scanner) scanner).nextLine();
+		        String dateStr = scanner.nextLine();
+		        System.out.print("diagnostic : ");
+		        String diagnostic = scanner.nextLine();
+		        System.out.print("prescription : ");
+		        String prescription = scanner.nextLine();
 		        System.out.print("Observation médicale : ");
-		        String observation = ((Scanner) scanner).nextLine();
+		        String observation = scanner.nextLine();
 
 		        RendezVous rendezVous = patient.getDossierMedical().getRendezVousByDate(dateStr);
 		        if (rendezVous == null) {
@@ -199,10 +204,11 @@ public class DossierMedical {
 		            return;
 		        }
 
-		        Resumerendezvous resume = new Resumerendezvous(dateStr, "Diagnostic", "Prescription", observation);
+		        Resumerendezvous resume = new Resumerendezvous(dateStr, diagnostic, prescription , observation);
 		        patient.getDossierMedical().addResumeRendezVous(resume);
 		        System.out.println("Résumé de rendez-vous ajouté avec succès.");
 		    }
+		   
 		   
 		   
 		   
